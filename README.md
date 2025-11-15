@@ -3,6 +3,8 @@
 A lightweight productivity app built with **React Native**, **Expo**, and **Supabase**.  
 It helps users manage daily routines, schedule activities, track streaks, and receive reminders.
 
+**📱 [Download Android APK](#-download)**
+
 ---
 
 ## ✨ Features
@@ -19,6 +21,18 @@ It helps users manage daily routines, schedule activities, track streaks, and re
 - ➕ **Add Screen** for adding routines or schedules
 - 💬 **Toast Messages** using `react-native-toast-message`
 - ☁️ Supabase + React Query for data, caching, and sync
+
+---
+
+## 📱 Download
+
+### Android APK
+
+Download the latest Android APK to install HabitTracker on your device:
+
+**[Download Habit Tracker APK](https://expo.dev/artifacts/eas/sTDKUeKfj2CJA5VdquL2w4.apk)**
+
+> **Note:** You may need to enable "Install from Unknown Sources" in your Android settings to install the APK.
 
 ---
 
