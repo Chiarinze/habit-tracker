@@ -1,50 +1,72 @@
-# Welcome to your Expo app 👋
+# Habit Tracker
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A lightweight productivity app built with **React Native**, **Expo**, and **Supabase**.  
+It helps users manage daily routines, schedule activities, track streaks, and receive reminders.
 
-## Get started
+---
 
-1. Install dependencies
+## ✨ Features
 
-   ```bash
-   npm install
-   ```
+- 📋 Create and manage **Daily Routines** (morning, afternoon, evening)
+- 📅 Add **Scheduled Activities** with optional time
+- 🏠 **Today Screen** showing all routines + activities due today
+- ✅ **Swipe Right to Complete** tasks (cannot be done twice per day)
+- 🔥 **Routine Streak Tracking** with best streak history
+- 📆 **Calendar View** with activity markers and delete support
+- 🔔 **Local Notifications**  
+  - 6 AM morning reminder  
+  - Custom reminder before scheduled time
+- ➕ **Add Screen** for adding routines or schedules
+- 💬 **Toast Messages** using `react-native-toast-message`
+- ☁️ Supabase + React Query for data, caching, and sync
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 🛠️ Tech Stack
 
-In the output, you'll find options to open the app in a
+- **Expo / React Native** - Mobile framework
+- **Expo Router** - File-based routing
+- **Supabase** - Backend and database
+- **React Query** - Data fetching and caching
+- **Expo Notifications** - Push notifications
+- **React Native Calendars** - Calendar component
+- **React Native Toast Message** - Toast notifications
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 🚀 Setup
 
-## Get a fresh project
+### 1. Install dependencies
 
-When you're ready, run:
-
-```bash
-npm run reset-project
+```sh
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 2. Add environment variables
 
-## Learn more
+Create a `.env` file or use Expo's built-in env system:
 
-To learn more about developing your project with Expo, look at the following resources:
+```env
+EXPO_PUBLIC_SUPABASE_URL=your-url
+EXPO_PUBLIC_SUPABASE_ANON_KEY=your-key
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### 3. Run the app
 
-## Join the community
+```sh
+npx expo start
+```
 
-Join our community of developers creating universal apps.
+---
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 📝 Notes
+
+- Notifications only work on real devices.
+- Scheduled reminders automatically sync when the app starts.
+- Streaks apply to routines only, not scheduled activities.
+
+---
+
+## 📄 License
+
+This project is for personal use and development.
