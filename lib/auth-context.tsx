@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "./supabase";
 import { Session } from "@supabase/supabase-js";
+import { cancelAllReminders } from "./reminders";
 
 type AuthContextType = {
   user: Session["user"] | null;
@@ -71,6 +72,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const signOut = async () => {
     try {
       await supabase.auth.signOut();
+      await cancelAllReminders();
       setSession(null);
     } catch (error) {
       console.error(error);

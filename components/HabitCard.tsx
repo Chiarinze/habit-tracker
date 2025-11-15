@@ -1,4 +1,3 @@
-import { Habit } from "@/types/database.types";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { StyleSheet, View } from "react-native";
 import { Surface, Text } from "react-native-paper";

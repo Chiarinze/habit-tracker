@@ -23,6 +23,8 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
 export const TABLES = {
   HABITS: 'habits',
   COMPLETIONS: 'completions',
+  ROUTINES: 'routines',
+  ROUTINE_COMPLETIONS: 'routine_completions',
 } as const;
 
 export interface RealtimeResponse {

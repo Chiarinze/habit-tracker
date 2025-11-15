@@ -3,9 +3,19 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Stack, useRouter, useSegments } from "expo-router";
 import React, { useEffect } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { ActivityIndicator, DefaultTheme, PaperProvider } from "react-native-paper";
+import {
+  ActivityIndicator,
+  DefaultTheme,
+  PaperProvider,
+} from "react-native-paper";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
+import { ToastProvider } from "@/components/ToastProvider";
+import {
+  configureNotificationChannel,
+  requestNotificationPermission,
+} from "@/lib/notifications";
+import { syncAllNotificationSchedules } from "@/lib/notification-sync";
 
 const queryClient = new QueryClient();
 
@@ -13,13 +23,13 @@ const theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    primary: '#6200ee',
-    accent: '#03dac4',
-    background: '#f5f5f5',
-    surface: '#ffffff',
-    text: '#000000',
-    placeholder: '#999999',
-    error: '#b00020',
+    primary: "#6200ee",
+    accent: "#03dac4",
+    background: "#f5f5f5",
+    surface: "#ffffff",
+    text: "#000000",
+    placeholder: "#999999",
+    error: "#b00020",
   },
   roundness: 8,
 };
@@ -47,23 +57,38 @@ function RouteGuard({ children }: { children: React.ReactNode }) {
 }
 
 export default function RootLayout() {
+  useEffect(() => {
+    (async () => {
+      await configureNotificationChannel();
+      const granted = await requestNotificationPermission();
+      console.log("Notification permission granted:", granted);
+
+      await syncAllNotificationSchedules();
+    })();
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <GestureHandlerRootView style={{ flex: 1 }}>
         <AuthProvider>
           <PaperProvider theme={theme}>
-            <SafeAreaProvider>
-              <StatusBar style="dark"/>
-              <RouteGuard>
-                <Stack>
-                  <Stack.Screen
-                    name="(tabs)"
-                    options={{ headerShown: false }}
-                  />
-                  <Stack.Screen name="auth" options={{ headerShown: false }}/>
-                </Stack>
-              </RouteGuard>
-            </SafeAreaProvider>
+            <ToastProvider>
+              <SafeAreaProvider>
+                <StatusBar style="dark" />
+                <RouteGuard>
+                  <Stack>
+                    <Stack.Screen
+                      name="(tabs)"
+                      options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                      name="auth"
+                      options={{ headerShown: false }}
+                    />
+                  </Stack>
+                </RouteGuard>
+              </SafeAreaProvider>
+            </ToastProvider>
           </PaperProvider>
         </AuthProvider>
       </GestureHandlerRootView>
